@@ -1,7 +1,7 @@
 const musicContainer = document.querySelector('.music-container');
 const playBtn = document.querySelector('#play');
 const prevBtn = document.querySelector('#prev');
-const NextBtn = document.querySelector('#next');
+const nextBtn = document.querySelector('#next');
 const audio = document.querySelector('#audio');
 const progress = document.querySelector('.progress');
 const progressContainer = document.querySelector('.progress-container');
@@ -12,7 +12,7 @@ const cover = document.querySelector('#cover');
 const songs = ['music_1', 'music_2', 'music_3'];
 
 // Keep track of song
-let songIndex = 2;
+let songIndex = 1;
 
 // Initial load song
 loadSong(songs[songIndex]);
@@ -28,12 +28,39 @@ function playSong() {
 	musicContainer.classList.add('play');
 	playBtn.querySelector('i.fas').classList.remove('fa-play');
 	playBtn.querySelector('i.fas').classList.add('fa-pause');
+
+	audio.play()
 }
 
 function pauseSong() {
 	musicContainer.classList.remove('play')
 	playBtn.querySelector('i.fas').classList.remove('fa-pause')
 	playBtn.querySelector('i.fas').classList.add('fa-play');
+
+	audio.pause();
+}
+
+function prevSong() {
+	songIndex--;
+
+	if (songIndex < 0) {
+		songIndex = songs.length - 1;
+	}
+
+	loadSong(songs[songIndex]);
+	playSong();
+}
+
+function nextSong() {
+	songIndex++;
+
+	if (songIndex > songs.length - 1) {
+		songIndex = 0;
+	}
+
+	loadSong(songs[songIndex]);
+	playSong();
+
 }
 
 // Event listeners
@@ -46,3 +73,7 @@ playBtn.addEventListener('click', () => {
 		playSong()
 	}
 });
+
+// Change songs events
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
