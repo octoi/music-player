@@ -14,3 +14,14 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+.music-container {
+	background-color: white;
+	border-radius: 15px;
+	box-shadow: 0 20px 20px 0 rgba(252, 169, 169, 0.6);
+	display: flex;
+	padding: 20px 30px;
+	position: relative;
+	margin: 100px;
+	z-index: 10;
+}
