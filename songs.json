@@ -1,0 +1,19 @@
+{
+	"songs": [
+		{
+			"name": "Beautiful music ever",
+			"image": "images/music_1.png",
+			"audio": "music/music_1.mp3"
+		},
+		{
+			"name": "Cool Music",
+			"image": "images/music_2.png",
+			"audio": "music/music_2.mp3"
+		},
+		{
+			"name": "Something Just Like",
+			"image": "images/music_3.png",
+			"audio": "music/music_3.mp3"
+		}
+	]
+}
