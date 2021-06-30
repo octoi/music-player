@@ -8,20 +8,14 @@ const progressContainer = document.querySelector('.progress-container');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
 
-// Song Titles
-const songs = ['music_1', 'music_2', 'music_3'];
-
-// Keep track of song
-let songIndex = 1;
-
-// Initial load song
-loadSong(songs[songIndex]);
+let songs = []; // songs array
+let songIndex = 0; // keep track of songs
 
 // Update song details
 function loadSong(song) {
-	title.innerText = song;
-	audio.src = `music/${song}.mp3`;
-	cover.src = `images/${song}.png`;
+	title.innerText = song.name;
+	audio.src = song.audio;
+	cover.src = song.image;
 }
 
 function playSong() {
@@ -97,3 +91,12 @@ audio.addEventListener('timeupdate', updateProgress)
 progressContainer.addEventListener('click', setProgress);
 
 audio.addEventListener('ended', nextSong);
+
+fetch('songs.json').then(res => {
+	res.json().then(data => {
+		songs = data.songs;
+		loadSong(songs[songIndex]);
+	}).catch(err => {
+		alert(err);
+	})
+})
