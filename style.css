@@ -92,3 +92,19 @@ body {
 	color: #cdc2d0;
 	font-size: 30px;
 }
+
+.music-info {
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 15px 15px 0 0;
+	position: absolute;
+	top: 0;
+	left: 20px;
+	width: calc(100% - 40px);
+	opacity: 0;
+	transform: translateY(0%);
+}
+
+.music-container.play .music-info {
+	opacity: 1;
+	transform: translateY(-100%);
+}
